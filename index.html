@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7eee9">
+  <title>For you, always.</title>
+  <meta name="description" content="A bouquet that never fades, and a letter from the heart.">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500;600&display=swap');
+
+    :root {
+      --ink: #53313b;
+      --rose: #a34b65;
+      --paper: #fffaf5
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: #f7eee9;
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      background-image: radial-gradient(ellipse at 50% 25%, #fffaf7 0%, transparent 60%)
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent
+    }
+
+    button {
+      font: inherit
+    }
+
+    header {
+      max-width: 1320px;
+      margin: auto;
+      padding: 28px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase
+    }
+
+    .brand {
+      display: flex;
+      gap: 10px;
+      align-items: center
+    }
+
+    .heart {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.4
+    }
+
+    .motion {
+      border: 1px solid #dbc6c8;
+      background: transparent;
+      border-radius: 30px;
+      padding: 10px 16px;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: 0;
+      cursor: pointer
+    }
+
+    .hero {
+      text-align: center;
+      padding: 37px 20px 0;
+      position: relative
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #9a6d76
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(58px, 8vw, 96px);
+      line-height: 1.05;
+      margin: 20px 0 17px;
+      letter-spacing: -3px
+    }
+
+    h1 em {
+      color: var(--rose);
+      font-weight: 400
+    }
+
+    .intro {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #947881;
+      margin: 0
+    }
+
+    .bouquet-wrap {
+      position: relative;
+      width: min(520px, 95vw);
+      height: 460px;
+      margin: -3px auto -12px
+    }
+
+    .bouquet {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      filter: drop-shadow(0 18px 18px #ad768327)
+    }
+
+    .bouquet-inner {
+      transform-origin: 260px 420px;
+      animation: sway 7s ease-in-out infinite
+    }
+
+    .flower {
+      animation: bloom 1.7s cubic-bezier(.2, .7, .2, 1) both;
+      transform-box: fill-box;
+      transform-origin: center
+    }
+
+    .petals {
+      filter: drop-shadow(0 3px 3px #9a38502a)
+    }
+
+    .tag {
+      position: absolute;
+      top: 245px;
+      right: 0;
+      transform: rotate(9deg);
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 18px;
+      color: #a57980
+    }
+
+    .tag:before {
+      content: '';
+      display: block;
+      width: 45px;
+      height: 25px;
+      border-top: 1px solid #cba7ac;
+      border-radius: 50%;
+      transform: rotate(-30deg);
+      margin-left: -40px
+    }
+
+    .read {
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      color: var(--ink);
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 13px 0;
+      border-bottom: 1px solid #b98c96
+    }
+
+    .read svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      fill: none
+    }
+
+    .letter-section {
+      max-width: 820px;
+      margin: 90px auto 70px;
+      padding: 0 24px;
+      position: relative
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 17px;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #a17b83;
+      margin-bottom: 25px
+    }
+
+    .section-label:before,
+    .section-label:after {
+      content: '';
+      height: 1px;
+      background: #ddc6c9;
+      width: 60px
+    }
+
+    .letter {
+      background: var(--paper);
+      border: 1px solid #e8d8d3;
+      padding: 46px 55px 24px;
+      box-shadow: 0 16px 50px #76505b09;
+      position: relative
+    }
+
+    .letter:before {
+      content: '';
+      position: absolute;
+      inset: 7px;
+      border: 1px solid #eee3dc;
+      pointer-events: none
+    }
+
+    .letter-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px
+    }
+
+    .letter-top span {
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b28c90
+    }
+
+    .letter-top .heart {
+      color: #b96b7f;
+      width: 23px;
+      height: 23px
+    }
+
+    .scroll-letter {
+      max-height: 440px;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding-right: 24px;
+      scrollbar-width: thin;
+      scrollbar-color: #cfa4af #f1e5e1
+    }
+
+    .scroll-letter:focus-visible {
+      outline: 1px solid #ac6b7f;
+      outline-offset: 5px
+    }
+
+    .scroll-letter h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 35px;
+      font-weight: 400;
+      font-style: italic;
+      margin: 0 0 23px
+    }
+
+    .scroll-letter p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 21px;
+      line-height: 1.7;
+      margin: 0 0 22px;
+      color: #71535b
+    }
+
+    .signature {
+      font-style: italic;
+      font-size: 27px !important;
+      color: var(--rose) !important
+    }
+
+    .letter-bottom {
+      border-top: 1px solid #eadbd5;
+      margin-top: 24px;
+      padding: 17px 0 0;
+      text-align: center;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #a98a8e
+    }
+
+    .closing {
+      text-align: center;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 27px;
+      font-style: italic;
+      margin: 44px 10px 16px
+    }
+
+    .send-love {
+      display: block;
+      border: 1px solid #d3afb8;
+      border-radius: 40px;
+      background: transparent;
+      color: var(--rose);
+      padding: 12px 22px;
+      margin: 22px auto;
+      cursor: pointer;
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      font-size: 11px
+    }
+
+    .send-love:hover {
+      background: #eedce0
+    }
+
+    footer {
+      text-align: center;
+      padding: 5px 20px 30px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #b39299
+    }
+
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5
+    }
+
+    .particle {
+      position: absolute;
+      bottom: -40px;
+      color: #c47890;
+      animation: floatUp var(--dur) linear forwards;
+      opacity: 0
+    }
+
+    .particle svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+      stroke: none
+    }
+
+    #toast {
+      height: 18px;
+      text-align: center;
+      color: #a34b65;
+      font-size: 12px
+    }
+
+    .paused * {
+      animation-play-state: paused !important
+    }
+
+    @keyframes sway {
+      50% {
+        transform: rotate(2deg)
+      }
+    }
+
+    @keyframes bloom {
+      from {
+        opacity: 0;
+        scale: .2
+      }
+
+      to {
+        opacity: 1;
+        scale: 1
+      }
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(-15deg)
+      }
+
+      15% {
+        opacity: .35
+      }
+
+      80% {
+        opacity: .25
+      }
+
+      100% {
+        opacity: 0;
+        transform: translate(var(--drift), -110vh) rotate(35deg)
+      }
+    }
+
+    @media(max-width:600px) {
+      header {
+        padding: 22px 22px
+      }
+
+      .hero {
+        padding-top: 28px
+      }
+
+      h1 {
+        letter-spacing: -2px
+      }
+
+      .intro {
+        font-size: 12px
+      }
+
+      .bouquet-wrap {
+        height: 390px;
+        max-width: 420px
+      }
+
+      .tag {
+        right: 10px;
+        top: 230px;
+        font-size: 15px
+      }
+
+      .letter-section {
+        margin-top: 65px;
+        padding: 0 17px
+      }
+
+      .letter {
+        padding: 30px 26px 20px
+      }
+
+      .scroll-letter {
+        padding-right: 15px;
+        max-height: 430px
+      }
+
+      .scroll-letter p {
+        font-size: 20px
+      }
+
+      .letter-top span {
+        font-size: 8px
+      }
+
+      .closing {
+        font-size: 25px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      * {
+        animation: none !important
+      }
+
+      .particle {
+        display: none
+      }
+    }
+
+    .song-card {
+      max-width: 430px;
+      margin: 32px auto 0;
+      padding: 19px 23px;
+      border: 1px solid #e0c9cd;
+      border-radius: 14px;
+      background: #fffaf580;
+      text-align: left;
+      display: flex;
+      gap: 16px;
+      align-items: center
+    }
+
+    .song-icon {
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: #efdee2;
+      display: grid;
+      place-items: center;
+      color: #a34b65
+    }
+
+    .song-icon svg {
+      width: 19px;
+      height: 19px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5
+    }
+
+    .song-details {
+      flex: 1;
+      min-width: 0
+    }
+
+    .song-details strong {
+      display: block;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 23px;
+      font-weight: 500
+    }
+
+    .song-details p {
+      font-size: 10px;
+      color: #a17b83;
+      margin: 5px 0 0
+    }
+
+    .song-card audio {
+      display: block;
+      width: 100%;
+      height: 32px;
+      margin-top: 12px
+    }
+
+    .song-card audio[hidden] {
+      display: none
+    }
+  </style>
+</head>
+
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="heart" viewBox="0 0 24 24">
+        <path
+          d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z" />
+      </symbol>
+    </defs>
+  </svg>
+  <header>
+    <div class="brand"><svg class="heart">
+        <use href="#heart" />
+      </svg> A little love letter</div><button class="motion" aria-pressed="false" id="motion">Pause effects</button>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="eyebrow">Picked with love. Made for you.</div>
+      <h1>For you, <em>always.</em></h1>
+      <p class="intro">If my feelings could bloom, they would look like this.<br>A little bouquet, and a whole lot of
+        love.</p>
+      <div class="bouquet-wrap"><svg class="bouquet" viewBox="0 0 520 460" role="img"
+          aria-label="An animated bouquet of pink roses, blush cosmos and tiny white flowers, wrapped in cream paper with a rose ribbon">
+          <defs>
+            <linearGradient id="wrap" x1="0" x2="1" y2="1">
+              <stop stop-color="#eee0ce" />
+              <stop offset=".5" stop-color="#fff8eb" />
+              <stop offset="1" stop-color="#d9bda9" />
+            </linearGradient>
+            <radialGradient id="petal">
+              <stop stop-color="#e99aae" />
+              <stop offset=".6" stop-color="#df819b" />
+              <stop offset="1" stop-color="#bf5b7c" />
+            </radialGradient>
+            <radialGradient id="blush">
+              <stop stop-color="#ffe9e5" />
+              <stop offset="1" stop-color="#efa7b6" />
+            </radialGradient>
+            <linearGradient id="ribbon">
+              <stop stop-color="#93485f" />
+              <stop offset=".5" stop-color="#c2798c" />
+              <stop offset="1" stop-color="#9b4c66" />
+            </linearGradient>
+          </defs>
+          <g class="bouquet-inner">
+            <path d="M137 176 257 434 373 176 278 231Z" fill="#dcc7b3" />
+            <path d="m125 180 132 254 27-179Z" fill="url(#wrap)" />
+            <path d="m389 176-132 258-10-179Z" fill="url(#wrap)" />
+            <g id="stems" stroke="#6f8668" stroke-width="4" fill="none"></g>
+            <g id="leaves"></g>
+            <g id="flowers"></g>
+            <path d="m143 252 114 182 9-116Z" fill="url(#wrap)" />
+            <path d="m376 247-119 187 9-116Z" fill="#f4e8d8" />
+            <path d="m257 434 9-116 45-31" fill="none" stroke="#cfb9a3" stroke-width="1" />
+            <path d="M235 350Q172 299 178 338q8 39 72 23M272 351q64-53 68-15 0 35-72 26" fill="url(#ribbon)"
+              stroke="#914961" stroke-width="1" />
+            <path d="m246 357-30 71 24-13 9 20 11-75m7-4 35 66-22-7-4 20-19-73" fill="url(#ribbon)" />
+            <ellipse cx="259" cy="357" rx="14" ry="10" fill="#a45a71" />
+          </g>
+        </svg><span class="tag">just for you</span></div><a class="read" href="#letter">There’s more in my heart <svg
+          viewBox="0 0 24 24">
+          <path d="M12 4v16m-5-5 5 5 5-5" />
+        </svg></a>
+    </section>
+    <aside class="song-card" aria-label="Our song">
+      <div class="song-icon"><svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 18V5l12-2v13M9 9l12-2" />
+          <ellipse cx="6" cy="18" rx="3" ry="3" />
+          <ellipse cx="18" cy="16" rx="3" ry="3" />
+        </svg></div>
+      <div class="song-details"><strong id="song-title">Spark</strong>
+        <p id="song-note">Enjoyyy.</p><audio id="our-song" controls autoplay loop preload="auto" hidden
+          aria-label="Play our song"></audio>
+      </div>
+    </aside>
+    <section id="letter" class="letter-section">
+      <div class="section-label">Words I mean, every single one</div>
+      <article class="letter">
+        <div class="letter-top"><span>A letter to my favorite person</span><svg class="heart">
+            <use href="#heart" />
+          </svg></div>
+        <div class="scroll-letter" tabindex="0" role="region" aria-label="Love letter, scroll to read the full message">
+          <h2>My love,</h2>
+          <p>I wish I could hand you these flowers in person, watch your face light up, and tell you everything that
+            sometimes gets caught between my heart and my words. But for now, I made this little corner of the world for
+            you. A place you can come back to whenever you need a reminder that you are loved, appreciated, and held
+            close in someone’s heart.</p>
+          <p>There is something about you that makes even an ordinary day feel a little softer. It is in your smile, in
+            the way you talk about the things you care about, and in all the little details you probably don’t think
+            anyone notices. I notice. And the more I get to know you, the more reasons I find to be grateful for you.
+          </p>
+          <p>I love the thought of us sharing the simplest things: a conversation that lasts longer than we planned, a
+            quiet walk, a silly joke, or just being beside each other without having to fill every silence. I don’t need
+            every moment to be extraordinary. With you, even the small ones are worth keeping.</p>
+          <p>If you could see yourself through my eyes, I hope you would be a little kinder to yourself. You would see
+            someone who doesn’t have to be perfect to be wonderful. Someone whose feelings matter, whose dreams deserve
+            room to grow, and whose presence brings a kind of warmth that cannot be replaced.</p>
+          <p>On the days when everything feels heavy, I hope you remember that you don’t have to have all the answers.
+            You are allowed to rest. You are allowed to be quiet, to feel unsure, and to take your time. You don’t need
+            to hide the difficult parts of your day to deserve gentleness. I want to listen to those parts, too.</p>
+          <p>I cannot promise that I will always find the perfect words, or that I will never get things wrong. But I
+            want to keep learning how to love you with patience, honesty, and care. I want to understand you better,
+            listen when something matters to you, and show you through my actions that your heart is safe to be itself
+            with me.</p>
+          <p>Thank you for being you. For the little moments that stay in my mind long after they happen. For the
+            happiness that comes with seeing your name, hearing your voice, or simply knowing that you are part of my
+            life. You may not realize how much those things mean to me, but they do. More than I can fit into one
+            letter.</p>
+          <p>This bouquet may be made of lines and colors, but the feeling behind it is real. Every flower is a little
+            way of saying what I hope you never forget: you matter to me. You are someone I want to make time for,
+            someone I want to celebrate, and someone I want to keep choosing in the quiet, everyday ways that love
+            becomes something lasting.</p>
+          <p>So take these flowers, and take your time with this letter. There is no hurry here. Just a little piece of
+            my heart, waiting for you whenever you need it. If this makes you smile, even just a little, then it has
+            done exactly what I hoped it would.</p>
+          <p>Until I can give you a real bouquet, let this one bloom for you. And when you reach the end of these words,
+            know that my care for you keeps going.</p>
+          <p class="signature">With all my love,<br>Always yours.</p>
+        </div>
+        <div class="letter-bottom">Scroll slowly. This one is from the heart.</div>
+      </article>
+      <p class="closing">Some flowers fade. This feeling stays.</p><button class="send-love" id="love"><svg
+          class="heart">
+          <use href="#heart" />
+        </svg>A little more love</button>
+      <div id="toast" role="status"></div>
+    </section>
+  </main>
+  <footer>Made with love · Just for you</footer>
+  <div class="particles" aria-hidden="true" id="particles"></div>
+  <script>
+    // SONG PLACEHOLDER: put your MP3 beside this HTML file and update this filename.
+    const SONG_URL = "sparks.mp3";
+    const SONG_TITLE = "A song for you"; // Change this to your song's title.
+    const audio = document.getElementById('our-song');
+    const songNote = document.getElementById('song-note');
+    document.getElementById('song-title').textContent = SONG_TITLE;
+    if (SONG_URL.trim()) {
+      audio.src = SONG_URL;
+      audio.hidden = false;
+      audio.preload = 'auto';
+      audio.autoplay = true;
+      songNote.textContent = 'Enjoyyy.';
+      let starting = false;
+      function removeStartListeners() {
+        document.removeEventListener('pointerdown', startSong);
+        document.removeEventListener('keydown', startSong);
+      }
+      function startSong() {
+        if (!audio.paused || starting || audio.error) return;
+        starting = true;
+        audio.play().catch(() => {
+          if (!audio.error) songNote.textContent = 'Tap anywhere or press play to start the music.';
+        }).finally(() => { starting = false; });
+      }
+      audio.addEventListener('playing', () => {
+        songNote.textContent = 'Enjoyyy.';
+        removeStartListeners();
+      });
+      document.addEventListener('pointerdown', startSong);
+      document.addEventListener('keydown', startSong);
+      audio.addEventListener('error', () => {
+        songNote.textContent = 'Add your MP3 and update SONG_URL to its filename.';
+      });
+      audio.load();
+      startSong();
+    }
+    const ns = 'http://www.w3.org/2000/svg'; function el(tag, a, parent) { const n = document.createElementNS(ns, tag); for (const k in a) n.setAttribute(k, a[k]); parent.appendChild(n); return n } const stems = document.getElementById('stems'), leaves = document.getElementById('leaves'), flowers = document.getElementById('flowers');
+    const blooms = [[168, 171, 29, 1], [199, 119, 32, 0], [254, 97, 35, 1], [311, 119, 31, 0], [351, 173, 30, 1], [217, 185, 34, 0], [282, 168, 38, 0], [299, 227, 30, 1], [241, 243, 29, 1], [161, 224, 22, 1], [365, 218, 22, 0]];
+    for (let i = 0; i < 16; i++) { let a = i * 2.4, x = 260 + Math.sin(a) * (70 + i * 3), y = 125 + i * 9; el('path', { d: `M260 360Q${x} 250 ${x} ${y}`, stroke: '#71836a', 'stroke-width': 2, fill: 'none' }, stems); for (let j = 0; j < 2; j++) { let yy = y + 25 + j * 35, dir = i % 2 ? 1 : -1; el('path', { d: `M${x} ${yy + 25}q${dir * 42} -8 ${dir * 30} -43q${-dir * 34} 8 ${-dir * 30} 43`, fill: i % 3 ? '#8b9d83' : '#647e69', opacity: '.88' }, leaves) } }
+    blooms.forEach(([x, y, r, type], idx) => { el('path', { d: `M260 363Q${x - 20} 260 ${x} ${y}` }, stems); const g = el('g', { class: 'flower', style: `animation-delay:${idx * .09}s` }, flowers); const p = el('g', { class: 'petals', transform: `translate(${x} ${y}) rotate(${idx * 19})` }, g); if (type) { for (let j = 0; j < 8; j++)el('ellipse', { cx: 0, cy: -r * .48, rx: r * .39, ry: r * .65, fill: 'url(#blush)', transform: `rotate(${j * 45})` }, p); el('circle', { r: r * .2, fill: '#c79b59' }, p); for (let j = 0; j < 9; j++)el('circle', { cx: Math.sin(j * 2.4) * r * .15, cy: Math.cos(j * 2.4) * r * .15, r: 1.5, fill: '#f6dfaa' }, p) } else { for (let layer = 0; layer < 3; layer++)for (let j = 0; j < 6; j++)el('ellipse', { cx: 0, cy: -r * (.4 - layer * .12), rx: r * (.51 - layer * .13), ry: r * (.62 - layer * .17), fill: 'url(#petal)', stroke: '#efadc0', 'stroke-width': '.6', transform: `rotate(${j * 60 + layer * 34})` }, p); el('path', { d: 'M-5 2Q-9-7 1-6T5 5Q-2 10-5 2', fill: '#b75b78' }, p) } });
+    for (let i = 0; i < 28; i++) { let x = 130 + (i * 79 % 270), y = 105 + (i * 47 % 155); if (i % 3 === 0 || x < 155 || x > 350) { el('path', { d: `M260 342Q${x} 250 ${x} ${y}`, stroke: '#91a28b', 'stroke-width': 1, fill: 'none' }, stems); const g = el('g', { class: 'flower', style: `animation-delay:${i * .035}s` }, flowers); for (let j = 0; j < 5; j++)el('circle', { cx: x + Math.sin(j * 1.257) * 4, cy: y + Math.cos(j * 1.257) * 4, r: 3.3, fill: '#fffdf1' }, g); el('circle', { cx: x, cy: y, r: 1.6, fill: '#d5bb83' }, g) } }
+    let paused = matchMedia('(prefers-reduced-motion: reduce)').matches; const motion = document.getElementById('motion'); function setMotion() { document.body.classList.toggle('paused', paused); motion.textContent = paused ? 'Play effects' : 'Pause effects'; motion.setAttribute('aria-pressed', String(paused)) } setMotion(); motion.onclick = () => { paused = !paused; setMotion() }; function heart(burst = false) { if (paused) return; const n = document.createElement('span'); n.className = 'particle'; n.style.cssText = `left:${Math.random() * 100}%;width:${8 + Math.random() * 17}px;height:24px;--dur:${burst ? 4 + Math.random() * 3 : 9 + Math.random() * 5}s;--drift:${Math.random() * 140 - 70}px`; n.innerHTML = '<svg viewBox="0 0 24 24"><use href="#heart"/></svg>'; document.getElementById('particles').append(n); n.addEventListener('animationend', () => n.remove()) } setInterval(() => { if (!document.hidden) heart() }, 1100); document.getElementById('love').onclick = () => { for (let i = 0; i < 16; i++)setTimeout(() => heart(true), i * 75); document.getElementById('toast').textContent = 'You are loved. More than words can say.' };
+  </script>
+</body>
+
+</html>
